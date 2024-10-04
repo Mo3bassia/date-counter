@@ -5,28 +5,19 @@ import "./index.css";
 let date = new Date();
 
 function App() {
+  return (
+    <div className="container">
+      <Counter />
+    </div>
+  );
+}
+
+function Counter() {
   const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
   const [current, setCurrent] = useState("Today is");
   const [currentDate, setCurrentDate] = useState(new Date());
 
-  return (
-    <div className="container">
-      <Step step={step} setStep={setStep} />
-      <Count
-        step={step}
-        count={count}
-        setCount={setCount}
-        setCurrent={setCurrent}
-        currentDate={currentDate}
-        setCurrentDate={setCurrentDate}
-      />
-      <Result current={current} currentDate={currentDate} />
-    </div>
-  );
-}
-
-function Step({ step, setStep }) {
   function handlePlus() {
     setStep((step) => step + 1);
   }
@@ -34,23 +25,6 @@ function Step({ step, setStep }) {
     setStep((step) => step - 1);
   }
 
-  return (
-    <div className="step">
-      <button onClick={handleMinus}>-</button>
-      <span>Step: {step}</span>
-      <button onClick={handlePlus}>+</button>
-    </div>
-  );
-}
-
-function Count({
-  step,
-  count,
-  currentDate,
-  setCount,
-  setCurrent,
-  setCurrentDate,
-}) {
   function handleNext() {
     setCurrentDate(new Date(currentDate.setDate(currentDate.getDate() + step)));
     setCount((c) => c + step);
@@ -75,19 +49,21 @@ function Count({
   }
 
   return (
-    <div className="count">
-      <button onClick={handlePrevious}>-</button>
-      <span>Count: {count}</span>
-      <button onClick={handleNext}>+</button>
-    </div>
-  );
-}
-
-function Result({ current, currentDate }) {
-  return (
-    <p>
-      {current} {currentDate.toDateString()}
-    </p>
+    <>
+      <div className="step">
+        <button onClick={handleMinus}>-</button>
+        <span>Step: {step}</span>
+        <button onClick={handlePlus}>+</button>
+      </div>
+      <div className="count">
+        <button onClick={handlePrevious}>-</button>
+        <span>Count: {count}</span>
+        <button onClick={handleNext}>+</button>
+      </div>
+      <p>
+        {current} {currentDate.toDateString()}
+      </p>
+    </>
   );
 }
 
