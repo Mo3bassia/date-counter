@@ -58,3 +58,21 @@ body {
 .container button:hover {
   opacity: 0.8;
 }
+
+[type="number"] {
+  padding: 8px;
+  background-color: #f7f7f7;
+  border: none;
+  outline: none;
+  box-shadow: 0 7px 29px 0 #64646f33;
+  border-radius: 12px;
+}
+
+.reset {
+  display: block;
+  width: fit-content;
+  margin: auto;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
